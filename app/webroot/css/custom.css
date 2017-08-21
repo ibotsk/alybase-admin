@@ -1,0 +1,30 @@
+
+#chrom-data-detail div[class*="col-"] { padding-left: 0; }
+
+footer { height:50px; }
+
+.odd { background-color: #cecece; }
+.ui-menu-item:hover { font-weight: normal; background-color: #fff; }
+
+/*
+.glyphicon-ok { color: #65c43c; }
+.glyphicon-remove { color: #ed2d2d; }
+*/
+.table { margin-top: 5px; }
+
+.editable-buttons .glyphicon-ok { color: #fff; }
+.editable-buttons .glyphicon-remove { color: #fff; }
+
+.editable-click { display: inline-block; width: 100%; background-color: #fcfce3; }
+.editable-click, a.editable-click { border-bottom: 1px solid #fff; }
+.editable-click:hover { border-bottom: 1px dashed #000; }
+
+.editable-container.editable-inline { width: 100%; }
+.editable-clear-x { right: 90px !important; }
+
+.clickable a { display: inline-block; width: 100%; }
+
+.table-bordered-outline { border: 1px solid #ddd; }
+
+ul.normal { list-style: none; padding-left: 0px; }
+.grey, .grey a { color: #aaa; }
