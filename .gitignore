@@ -9,6 +9,7 @@
 /dist
 /tags
 *.mo
+!/app/Plugin/*
 
 # IDE and editor specific files #
 #################################

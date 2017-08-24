@@ -198,7 +198,7 @@ foreach ($revisions as $r) :
             <td class="col-md-4"><?php echo __('Paper:'); ?></td>
             <td>
                 <?php
-                echo $this->AutoComplete->input('Material.Reference.id_literature', $this->Html->url('/literatures/search.json'), array(
+                echo $this->AutoComplete->input('Material.Reference.id_literature', $this->Html->url('/literature/search.json'), array(
                     'idText' => 'literature-paper',
                     'idHidden' => 'literature-id',
                     'textvalue' => $this->Format->literature(Hash::get($data, 'Material.Reference.Literature')),

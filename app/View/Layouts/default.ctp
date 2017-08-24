@@ -64,7 +64,7 @@
                             $active = ' class="active"';
                             ?>
                             <li<?php echo $ctrl == 'data' ? $active : ''; ?>><?php echo $this->Html->link(__('Chromosome data'), array('controller' => 'data', 'action' => 'index')); ?></li>
-                            <li<?php echo $ctrl == 'checklist' ? $active : ''; ?>><?php echo $this->Html->link(__('Taxa names'), array('controller' => 'checklist', 'action' => 'index')); ?></li>
+                            <li<?php echo $ctrl == 'checklist' ? $active : ''; ?>><?php echo $this->Html->link(__('Checklist'), array('controller' => 'checklist', 'action' => 'index')); ?></li>
                             <li<?php echo $ctrl == 'literature' ? $active : ''; ?>><?php echo $this->Html->link(__('Literature'), array('controller' => 'literature', 'action' => 'index')); ?></li> 
                         </ul>
                         <ul class="nav navbar-nav navbar-right">

@@ -102,9 +102,9 @@ if (Hash::check($data, 'ListOfSpecies.id')) { // data exist -> we are editing
                 <a data-toggle="collapse" href="#collapse1">Hybrid fields</a>
             </h4>
         </div>
-<?php
-$is_hybrid = Hash::get($data, 'ListOfSpecies.hybrid');
-?>
+        <?php
+        $is_hybrid = Hash::get($data, 'ListOfSpecies.hybrid');
+        ?>
         <div id="collapse1" class="panel-collapse collapse<?php echo $is_hybrid ? ' in' : ''; ?>"">
             <table class="table table-bordered table-condensed table-responsive">
                 <tr>
@@ -177,13 +177,13 @@ $is_hybrid = Hash::get($data, 'ListOfSpecies.hybrid');
 
 <div class="row">
     <div class="col-md-2 col-xs-6">
-<?php
-echo $this->Form->submit('Save', array(
-    'class' => 'btn btn-primary',
-    'div' => false,
-    'formnovalidate' => true
-));
-?>
+        <?php
+        echo $this->Form->submit('Save', array(
+            'class' => 'btn btn-primary',
+            'div' => false,
+            'formnovalidate' => true
+        ));
+        ?>
     </div>
     <div class="col-md-2 col-xs-6">
         <?php
@@ -208,6 +208,5 @@ echo $this->Form->submit('Save', array(
     </div>
 </div>
 
-        <?php
-        $this->Form->end();
-        
+<?php
+$this->Form->end();

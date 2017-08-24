@@ -17,7 +17,11 @@ class LiteratureController extends AppController {
     public $name = 'literature';
     public $uses = array('Literature');
     public $components = array('RequestHandler');
-    public $helpers = array('Format');
+    
+    public $helpers = array(
+        'Eip.Eip',
+        'Format'
+        );
 
     public function index() {
         $this->Literature->recursive = -1;
@@ -25,7 +29,7 @@ class LiteratureController extends AppController {
         $this->set(compact('literatures'));
     }
 
-    public function view($id) {
+    public function detail($id) {
         if (empty($id)) {
             throw new InvalidArgumentException('literatures/view: Id must be specified');
         }
@@ -34,6 +38,7 @@ class LiteratureController extends AppController {
         $this->set(compact('data'));
     }
 
+    
     /**
      * Used in ajax autocomplete
      */

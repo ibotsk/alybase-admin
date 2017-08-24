@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
                 <?php
-                echo $this->Form->create('Literature', array('url' => array('controller' => 'literatures', 'action' => 'insert'),
+                echo $this->Form->create('Literature', array('url' => array('controller' => 'literature', 'action' => 'insert'),
                     'id' => 'LiteratureInsertForm', 'role' => 'form', 'inputDefaults' => array('label' => false, 'div' => false)));
                 ?>
                 <div class="form-group">
