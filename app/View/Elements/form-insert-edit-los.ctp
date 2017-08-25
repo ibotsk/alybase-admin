@@ -1,5 +1,5 @@
 <?php
-//new dBug($data);
+new dBug($data);
 
 $ntypes = array(
     'A' => 'Accepted',
@@ -27,7 +27,6 @@ foreach ($accepted_list as $key => $val) {
     $l = $this->Format->los($val['ListOfSpecies']);
     $accepted_list[$key] = $l;
 }
-
 
 $action = 'insert';
 if (!empty($data)) {
@@ -59,6 +58,10 @@ if (Hash::check($data, 'ListOfSpecies.id')) { // data exist -> we are editing
     ));
 }
 ?>
+<script type="text/javascript">
+    var lossList = <?php echo json_encode($loss_list); ?>;
+    initLos(lossList);
+</script>
 <h3><?php echo __('Name'); ?></h3>
 <table class="table table-bordered table-condensed table-responsive">
     <tr class="form-group">
@@ -99,7 +102,10 @@ if (Hash::check($data, 'ListOfSpecies.id')) { // data exist -> we are editing
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title clickable">
-                <a data-toggle="collapse" href="#collapse1">Hybrid fields</a>
+                <a data-toggle="collapse" href="#collapse1">
+                    Hybrid fields
+                    <span class="pull-right">&blacktriangledown;</span>
+                </a>
             </h4>
         </div>
         <?php
@@ -173,6 +179,41 @@ if (Hash::check($data, 'ListOfSpecies.id')) { // data exist -> we are editing
         <td class="col-xs-4"><?php echo __('Nomen novum'); ?></td>
         <td><?php echo $this->Form->input('ListOfSpecies.id_nomen_novum', array('class' => 'form-control', 'type' => 'select', 'options' => $loss_list, 'value' => Hash::get($data, 'ListOfSpecies.id_nomen_novum'), 'empty' => true)); ?></td>
     </tr>
+</table>
+
+<h3><?php echo __('Nomenclatoric Synonyms'); ?></h3>
+<table id="nomenclatoric" class="table table-bordered table-condensed table-responsive">
+    <?php
+    foreach (Hash::get($data, 'SynonymsNomenclatoric', array()) as $val) :
+        ?>
+        <tr>
+            <td class="col-xs-11"><?php echo $this->Format->los($val); ?></td>
+            <td class="col-xs-1"><?php echo $this->Html->link('<span class="glyphicon glyphicon-remove"></span>', array('controller' => 'synonyms', 'action' => 'delete', $val['id']), array('class' => 'btn btn-danger btn-delete', 'escape' => false)); ?></td>
+        </tr>
+        <?php
+    endforeach;
+    ?>
+</table>
+
+<?php
+//format nomenclatoric synonyms for json
+//$syns_nomen = array();
+//foreach (Hash::get($data, 'SynonymsNomenclatoric', array()) as $val) {
+//    $l = $this->Format->los($val);
+//    $syns_nomen[$val['id']] = $l;
+//}
+//
+//echo $this->Html->script('additable-list', array('inline' => false));
+//$script = '$(document).ready(function() {' . "\n";
+//$script .= 'var lossource = ' . json_encode($syns_nomen) . ';' . "\n";
+//$script .= '$("#nomenclatoric").additableList({source: lossource, class: "table table-bordered table-condensed table-responsive"});' . "\n";
+//$script .= '});';
+//echo $this->Html->scriptBlock($script, array('inline' => false));
+?>
+
+<h3><?php echo __('Taxonomic Synonyms'); ?></h3>
+<table id="taxonomic" class="table table-bordered table-condensed table-responsive">
+
 </table>
 
 <div class="row">

@@ -114,7 +114,7 @@ if (Hash::check($data, 'Cdata.id')) { // data exist -> we are editing
             <td><?php echo __('Name exactly as originally published <small>(with spelling errors)</small>'); ?></td>
             <td>
                 <div class="input-group">
-<?php echo $this->Form->input('Material.Reference.name_as_published', array('type' => 'text', 'id' => 'identification-name-as-published', 'class' => 'form-control', 'value' => Hash::get($data, 'Material.Reference.name_as_published'))); ?>
+                    <?php echo $this->Form->input('Material.Reference.name_as_published', array('type' => 'text', 'id' => 'identification-name-as-published', 'class' => 'form-control', 'value' => Hash::get($data, 'Material.Reference.name_as_published'))); ?>
                     <div class="input-group-btn">
                         <button type="button" class="btn btn-default"
                                 id="name-as-published-copy" data-toggle="tooltip"
@@ -136,51 +136,51 @@ if (Hash::check($data, 'Cdata.id')) { // data exist -> we are editing
         initLos(lossList);
     </script>	
 
-<?php
-$i = 1;
-$revisions = Hash::get($data, 'History', array());
-$r_count = count($revisions);
-$first = '<span class="label label-primary">Newest</span>';
-$last = '<span class="label label-primary">Oldest</span>';
-?>
+    <?php
+    $i = 1;
+    $revisions = Hash::get($data, 'History', array());
+    $r_count = count($revisions);
+    $first = '<span class="label label-primary">Newest</span>';
+    $last = '<span class="label label-primary">Oldest</span>';
+    ?>
     <button id="revision-add" type="button" class="btn btn-success"
             data-toggle="tooltip" title="<?php echo __('Add newest revision'); ?>">
         <span class="glyphicon glyphicon-plus"></span>
     </button>
 
     <table id="revision-table" class="table table-bordered table-condensed">
-<?php if ($r_count == 0) : //no present revision means we are creating a new record. At least one revision must be added => original name  ?>
+        <?php if ($r_count == 0) : //no present revision means we are creating a new record. At least one revision must be added => original name  ?>
             <tr>
                 <td class="col-xs-1"><span class="label label-warning">First</span></td>
                 <td class="col-xs-3"><?php echo $this->Form->input('History.0.revised_name', array('class' => 'form-control', 'placeholder' => __('Revised name'))); ?></td>
                 <td class="col-xs-7"><?php echo $this->Form->input('History.0.id_standardised_name', array('class' => 'form-control', 'id' => 'revision-first-std-name', 'type' => 'select', 'options' => $loss_list, 'empty' => true)); ?></td>
-                <td class="col-xs-1"><?php //no delete button for this one  ?></td>
+                <td class="col-xs-1"><?php //no delete button for this one   ?></td>
             </tr>
-<?php
-endif;
+            <?php
+        endif;
 
 // class btn-delete-rev-strong is for revisions already in db, it deletes them permanently from the db
 // class btn-delete-rev-weak is for new revisions not yet in db, it only removes the row from this table
-foreach ($revisions as $r) :
-    ?>
+        foreach ($revisions as $r) :
+            ?>
             <tr>
                 <td class="col-xs-1"><?php echo $i == 1 ? $first : ($i == count($revisions) ? $last : ''); ?></td>
                 <td class="col-xs-3"><?php echo Hash::get($r, 'revised_name'); ?></td>
                 <td class="col-xs-7"><?php echo $this->Format->los(Hash::get($r, 'ListOfSpecies')); ?></td>
                 <td class="col-xs-1"><?php
-        if ($r_count > 1) { // we do not want to delete the only revision
-            echo $this->Html->link('<span class="glyphicon glyphicon-remove"></span>', array(
-                'controller' => 'revisions',
-                'action' => 'delete',
-                $r['id']
-                    ), array(
-                'class' => 'btn btn-danger btn-delete-strong',
-                'escape' => false,
-                'data-toggle' => 'tooltip',
-                'title' => __('Permanently remove this revision')
-            ));
-        }
-    ?></td>
+                    if ($r_count > 1) { // we do not want to delete the only revision
+                        echo $this->Html->link('<span class="glyphicon glyphicon-remove"></span>', array(
+                            'controller' => 'revisions',
+                            'action' => 'delete',
+                            $r['id']
+                            ), array(
+                            'class' => 'btn btn-danger btn-delete-strong',
+                            'escape' => false,
+                            'data-toggle' => 'tooltip',
+                            'title' => __('Permanently remove this revision')
+                        ));
+                    }
+                    ?></td>
             </tr>
             <?php
             $i++;
@@ -511,11 +511,11 @@ foreach ($revisions as $r) :
         ?>
     </div>
     <div class="col-md-2 col-xs-6">
-<?php
-echo $this->Html->link(__('Cancel'), '/data/index', array(
-    'class' => 'btn btn-default'
-));
-?>
+        <?php
+        echo $this->Html->link(__('Cancel'), '/data/index', array(
+            'class' => 'btn btn-default'
+        ));
+        ?>
     </div>
     <div class="col-md-8 col-xs-12">
         <?php

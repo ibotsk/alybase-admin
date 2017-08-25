@@ -27,7 +27,7 @@ foreach ($accepted_list as $key => $val) {
 }
 ?>
 
-<div id="chrom-data-detail" class="container">
+<div id="checklist-detail" class="container">
 
     <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $result['ListOfSpecies']['id']), array('class' => 'btn btn-default')); ?>
 
@@ -71,7 +71,10 @@ foreach ($accepted_list as $key => $val) {
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title clickable">
-                    <a data-toggle="collapse" href="#collapse1">Hybrid fields</a>
+                    <a data-toggle="collapse" href="#collapse1">
+                        Hybrid fields
+                        <span class="pull-right">&blacktriangledown;</span>
+                    </a>
                 </h4>
             </div>
             <?php
@@ -149,7 +152,7 @@ foreach ($accepted_list as $key => $val) {
 
     <h3>
         <?php echo __('Nomenclatoric Synonyms'); ?>
-        <small><?php echo __('(Synonyms can be managed only in ') . $this->Html->link('full edit mode', array('action' => 'edit', $result['ListOfSpecies']['id'])) . ')'; ?></small>
+        <small><?php echo __('(Synonyms can be managed only in ') . $this->Html->link('full edit mode', array('action' => 'edit', $result['ListOfSpecies']['id'], '#' => 'nomenclatoric')) . ')'; ?></small>
     </h3>
     <table class="table table-condensed table-responsive table-bordered-outline">
         <?php if (empty($result['SynonymsNomenclatoric'])): //show one empty row ?>
@@ -170,7 +173,7 @@ foreach ($accepted_list as $key => $val) {
 
     <h3>
         <?php echo __('Taxonomic Synonyms'); ?>
-        <small><?php echo __('(Synonyms can be managed only in ') . $this->Html->link('full edit mode', array('action' => 'edit', $result['ListOfSpecies']['id'])) . ')'; ?></small>
+        <small><?php echo __('(Synonyms can be managed only in ') . $this->Html->link('full edit mode', array('action' => 'edit', $result['ListOfSpecies']['id'], '#' => 'taxonomic')) . ')'; ?></small>
     </h3>
     <p>
         All associated nomenclatoric synonyms are shown here to see which are associated with each other. Those in grey colour will not be shown on the website.

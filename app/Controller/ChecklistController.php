@@ -28,6 +28,7 @@ class ChecklistController extends AppController {
                 ),
                 'limit' => 50,
                 'order' => array(
+                    /*
                     'ListOfSpecies.ntype_order',
                     'ListOfSpecies.genus',
                     'ListOfSpecies.species',
@@ -35,7 +36,7 @@ class ChecklistController extends AppController {
                     'ListOfSpecies.var',
                     'ListOfSpecies.subvar',
                     'ListOfSpecies.forma',
-                    'ListOfSpecies.authors',
+                    'ListOfSpecies.authors',*/
                     'ListOfSpecies.id'
                 )
             )
@@ -59,10 +60,20 @@ class ChecklistController extends AppController {
     }
 
     public function insert() {
-        
+        $accepted = $this->ListOfSpecies->listSpecies(array('ntype' => array('A', 'PA')));
+        $loss = $this->ListOfSpecies->listSpecies();
+        $this->set(compact('accepted', 'loss'));
     }
 
     public function edit($id) {
+        if ($this->request->is('post')) { // save edited data
+            $data = $this->request->data;
+
+            $this->ListOfSpecies->saveAll($data, array(
+                'atomic' => true,
+                'deep' => true
+            ));
+        }
         $data = $this->ListOfSpecies->getDetail($id);
         $accepted = $this->ListOfSpecies->listSpecies(array('ntype' => array('A', 'PA')));
         $loss = $this->ListOfSpecies->listSpecies();

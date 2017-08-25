@@ -28,13 +28,14 @@
         echo $this->Html->css('jquery-ui.min');
         echo $this->Html->css('/eip/css/bootstrap-editable');
         echo $this->Html->css('bootstrap.min');
-
+        echo $this->Html->css('additable-list');
         echo $this->Html->css('custom');
 
         echo $this->Html->script('jquery-1.11.3.min');
         echo $this->Html->script('jquery-ui.min');
         echo $this->Html->script('bootstrap.min');
         echo $this->Html->script('/eip/js/bootstrap-editable');
+        echo $this->Html->script('additable-list');
         echo $this->Html->script('libs');
         echo $this->Html->script('main');
 

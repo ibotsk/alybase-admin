@@ -138,13 +138,13 @@ $(document).ready(function () {
     		$select.append('<option value="' + key + '">' + value + '</option>');
     	});
     	
-    	var hiddenValue = $("#revision-add-hidden-template").val();
+    	//var hiddenValue = $("#revision-add-hidden-template").val();
     	
     	var $row = $("<tr>").append('<td class="col-xs-1"><span class="label label-warning">New</span></td>')
     	.append('<td class="col-xs-3"><input name="data[History][' + i + '][revised_name]" class="form-control" placeholder="Revised name" type="text"></td>')
     	.append($('<td class="col-xs-7">').append($select))
-    	.append('<td class="col-xs-1"><button type="button" class="btn btn-warning btn-delete-rev-weak"><span class="glyphicon glyphicon-remove"></span></button></td>')
-    	.append('<input type="hidden" name="data[History][' + i + '][id_data]" value="' + hiddenValue + '">');
+    	.append('<td class="col-xs-1"><button type="button" class="btn btn-warning btn-delete-rev-weak"><span class="glyphicon glyphicon-remove"></span></button></td>');
+    	//.append('<input type="hidden" name="data[History][' + i + '][id_data]" value="' + hiddenValue + '">');
     	
     	$row.prependTo($("#revision-table"));
     });
@@ -163,4 +163,12 @@ $(document).ready(function () {
     	$(this).parents("tr").remove();
     });
     
+    $("#nomenclatoric").additableList({
+        delBtn: '.btn-delete',
+        inputs: [{
+                type: 'select',
+                name: 'data[Abcd][$i][something]',
+                source: listofspecies
+        }]
+    });
 });
